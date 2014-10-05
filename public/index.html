@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>whack-a-mole</title>
+	<title>money-never-sleeps</title>
 	<!-- link to jquery commands file saved to make mac -->
 	<script src="jquery-1.11.1.js"></script>
 	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
@@ -13,15 +13,35 @@
 
 		body{
 			text-align: center;
+			
 		}
 
+		.jumbotron {
+              padding: 0px;
+              margin-bottom: 20px;
+
+              text-align: center;
+              color: black;
+              float: left;
+              opacity: 0.7;
+    			filter: alpha(opacity=40);
+              
+
+              /*background-image: url(img/bitcoin_conversion.jpeg);*/
+              }
+              .container .jumbotron {
+              border-radius: 0px;
+              }
+
 		.game-board{
-			width: 700px;
+			/*width: 700px;*/
 			/*text-align: center;*/
-			margin-left: 295px;
+			margin-left: 130px;
 			padding: 20px;
 			margin-bottom: 20px;
 			padding-bottom: 20px;
+			float: left;
+
 			/*border: 1px solid black;*/
 		}
 
@@ -30,17 +50,24 @@
 			/*text-align: center;*/
 		}
 		.mole-hole{
-			width: 169px;
-			height: 129px;
-			/*padding: 20px;*/
+			width: 230px;
+			height: 230px;
+			
 			float: left;
-			border: 4px solid black;
+			margin: 15px;
+			border: 1px transparent;
 
 			/*text-align: center;*/
 		}
 
 		span{
-			color: red;
+			color: green;
+		}
+		h1{
+			color: black;
+		}
+		h2{
+			color: black;
 		}
 
 	</style>
@@ -48,13 +75,38 @@
 
 
 
-<body>
-	<h1>Whack-a-mole</h1>
-	
-	<h3>score: <span id="score">0</span></h3><h3>bonus: <span id="bonus">0</span></h3><h3>total: <span id="total">0</span></h3>
-	
-	
-	<h3><button id="start-button" class="btn-btn primary">START</button></h3>
+<body background="thestreet.jpeg">
+ 
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-md-8">
+
+           <div class="jumbotron">
+            
+				<h1>Money Never <span>$</span>leeps</h1>
+				
+				<h2>Salary: $<span id="score">0</span></h2><h2>Quarterly Bonus: $<span id="bonus">0</span></h2><h2>Annual Bonus: $<span id="bonus2">0</span></h2><h2>Total Wealth: $<span id="total">0</span></h2>
+
+				<h2><button id="start-button" class="btn-btn primary">START</button></h2>
+
+				<audio class="audio-player" id="money" src="Money never sleeps.mp3"></audio>
+
+				<audio class="audio-player" id="bucks" src="Its all about bucks.mp3"></audio>
+
+				<audio class="audio-player" id="wake-up" src="Wake Up Call.mp3"></audio>
+
+				<audio class="audio-player" id="dog" src="Get a dog.mp3"></audio>
+
+				<audio class="audio-player" id="nuts" src="Im up to my ass.mp3"></audio>
+
+				<audio class="audio-player" id="greed" src="Greed is Good.mp3"></audio>
+
+				
+			</div>
+		</div>
+	</div>
+</div>
+
 	<div class="game-board">
 		
 
@@ -85,57 +137,88 @@
 		<div class="mole-hole" id="9">
 			
 		</div>
+		<div class="mole-hole" id="10">
+			
+		</div>
+		<div class="mole-hole" id="11">
+			
+		</div>
+		<div class="mole-hole" id="12">
+			
+		</div>
 		
 
 	</div>
 
 	<script>
 		// var holes = $('.mole-hole');
+		var i = 0;
 		var score = 0;
 		var timeoutID;
 		var timeoutID2;
+		var timeoutID3;
 		var bonus = 0;
-		var total = (score + bonus);
+		var total = (score + bonus + bonus2);
 
         $(document).ready(function(){
 
+        	function getSound() {
+			      $("#money").trigger("play");
+    		};
+
+    		function getSound2() {
+			      $("#bucks").trigger("play");
+    		};
+
+    		function getSound3() {
+			      $("#wake-up").trigger("play");
+    		};
+        	
+    		function getSound4() {
+			      $("#dog").trigger("play");
+    		};
+
+    		function getSound5() {
+			      $("#nuts").trigger("play");
+    		};
+
+    		function getSound6() {
+			      $("#greed").trigger("play");
+    		};
+
         	function getRand(){
         		
-    			var rand = Math.floor(Math.random() * 9) + 1;
-    			// $('#' + rand).append("<img id='theMole' src='/mole.jpeg'  alt='whack-a-mole'>").show(1000).delay(1000).hide(1000);
-	    		if(score < 200){
-	    			$("<img id='theMole' class='mole' src='/mole.jpeg'  alt='whack-a-mole'>").appendTo("#" + rand).show(500);
+    			var rand = Math.floor(Math.random() * 12) + 1;
+	    		if(score < 200000){
+	    			$("<img id='theMole' class='mole' src='gg.jpeg'  alt='whack-a-mole'>").appendTo("#" + rand).show(500);
 	    			timeoutID = setTimeout(function(){
 	    				$("img").hide(3000);
 	    			},2000);
-	    		} else if(score == 200) {
-	    			
-	 				$("<img id='theMole' class='mole' src='/mole.jpeg'  alt='whack-a-mole'>").appendTo("#" + rand).show(500);
+	    		} else if(score == 200000) {
+	    			getSound();
+	 				$("<img id='theMole' class='mole' src='gg.jpeg'  alt='whack-a-mole'>").appendTo("#" + rand).show(500);
 	 				timeoutID = setTimeout(function(){
 	    				$("img").hide(2000);
 					},2000);
 					
-	 			} else if(score > 200) {
-	 				$("<img id='theMole' class='mole' src='/mole.jpeg'  alt='whack-a-mole'>").appendTo("#" + rand).show(500);
+	 			} else if(score > 200000) {
+	 				$("<img id='theMole' class='mole' src='gg.jpeg'  alt='whack-a-mole'>").appendTo("#" + rand).show(500);
 	 				timeoutID = setTimeout(function(){
 	    				$("img").hide(2000);
 					},2000);
 						getBonus();
-	 			} else if(score > 400){
-					$("<img id='theMole' class='mole' src='/mole.jpeg'  alt='whack-a-mole'>").appendTo("#" + rand).show(500);
-	 				timeoutID = setTimeout(function(){
-	    				$("img").hide(1000);
+						getBonus2();
 
-	    			},1000);
-	 			}
+	 			} 
+
 	        };
 
 	        function getBonus(){
         		
-    			 var bonusRound = Math.floor(Math.random() * 9) + 1;
+    			 var bonusRound = Math.floor(Math.random() * 20) + 1;
 
-	    			 if(bonusRound == 1 || bonusRound == 3 || bonusRound == 5){
-						$("<img id='theBonus' class='Bonus' src='/images.jpeg'  alt='Bonus-Round'>").appendTo("#" + bonusRound).show(500);
+	    			 if(bonusRound == 1 || bonusRound == 4 || bonusRound == 8 || bonusRound == 10){
+						$("<img id='theBonus' class='Bonus' src='signing-bonus.jpg'  alt='Bonus-Round'>").appendTo("#" + bonusRound).show(500);
 			 				timeoutID2 = setTimeout(function(){
 			    				$("#theBonus").hide(3000);
 
@@ -143,43 +226,87 @@
 		 				}
 	        		};
 
+	        function getBonus2(){
+        		
+    			 var bonusRound2 = Math.floor(Math.random() * 30) + 1;
+
+	    			 if(bonusRound2 == 2 ||  bonusRound2 ==12){
+						$("<img id='theBonus2' class='Bonus2' src='bonus.jpeg'  alt='Bonus-Round2'>").appendTo("#" + bonusRound2).show(500);
+
+			 				timeoutID3 = setTimeout(function(){
+			    				$("#theBonus2").hide(3000);
+
+		    				},4000);
+		 				}
+	        		};
+
         	$('#start-button').click(function() {
         		getRand();
-        		//getBonus();
+        		getSound6();
+
         		$('#score').html(score = 0);
         		$('#bonus').html(bonus = 0);
+        		$('#bonus2').html(bonus2 = 0);
         		$('#total').html(total = 0);	
-     		});  
+     	});  
 
-     		$('.mole-hole').on("click", "#theMole", function(){
+     		$('.mole-hole').on("click", "#theMole", function() {
+     						i++;
+     					if(i % 2 == 0 && score > 100000){
+     						getSound5();
+     					}
+     					 if(i % 3 == 0 && score > 100000){
+     						getSound4();
+     					}
+     					 if(i % 5 == 0 && score > 100000){
+     						getSound3();
+     					}
+     					 if(i % 7 == 0 && score > 100000){
+     						getSound();
+     					}
+
+     						
 					clearTimeout(timeoutID);
 
-					$(this).hide("explode",1000);
+					 $(this).hide("explode",1000);
+
 					$(this).remove();
 	 					
-					$('#score').html(score +=10);
+					$('#score').html(score +=10000);
 					$('#total').html(score + bonus);
 						getRand(); 
+     					
      			});
 
      		$('.mole-hole').on("click", "#theBonus", function(){
-     			
+     			getSound2();
 				clearTimeout(timeoutID2);
 
  				$(this).hide("explode",1000);
  				$(this).remove();
-     				
- 				//$('#score').html(score +=10);
 
- 				// if(score = 100){
-     			$('#bonus').html(bonus +=20);
-     			$('#total').html(score + bonus);
+     			$('#bonus').html(bonus +=27639);
+     			$('#total').html(score + bonus + bonus2);
      				getBonus();
-     				//clearTimeout(timeoutID2);
-     			});
-     			
- 				
+     				
+
      		});
+     			
+ 				$('.mole-hole').on("click", "#theBonus2", function(){
+     			getSound2();
+				clearTimeout(timeoutID3);
+
+ 				$(this).hide("explode",1000);
+ 				$(this).remove();
+
+     			$('#bonus2').html(bonus2 +=37639);
+     			$('#total').html(score + bonus + bonus2);
+     				getBonus2();
+     				
+     				
+     		});
+
+     	});
 
     
 
